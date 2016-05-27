@@ -12,7 +12,7 @@ describe('pipeP()', function () {
     }
 
     function div_by_zero() {
-        throw new Error('div by zero')
+        throw new Error('div by zero.')
     }
 
     it('chains promises', function (done) {
