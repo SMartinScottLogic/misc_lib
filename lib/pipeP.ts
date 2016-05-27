@@ -1,5 +1,6 @@
 'use strict';
 
+// ((a → Promise b), (b → Promise c), …, (y → Promise z)) → (a → Promise z)
 export function pipeP(head, ...promises): any {
     const context = this;
     return function () {
@@ -19,16 +20,3 @@ export function pipeP(head, ...promises): any {
         })
     }
 }
-
-/**
-function sum2(a, b): Promise<number> {
-    console.log('sum2', a, b)
-    return Promise.resolve(a + b);
-}
-
-function increment(a): Promise<number> {
-    return a + 1;
-}
-
-pipeP(sum2, increment, increment, 7, increment, increment, increment, increment, increment)(1, 3).then((result) => console.log(result)).catch((err) => console.trace(err))
-**/
