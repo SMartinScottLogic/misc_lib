@@ -3,6 +3,7 @@
   "scripts": {
     "pretest": "npm run build",
     "prestart": "npm run build",
+    "prebuild": "npm install && typings install",
     "build": "gulp",
     "start": "node build/example1",
     "test": "mocha -c \"dist/**/*.spec.js\""
