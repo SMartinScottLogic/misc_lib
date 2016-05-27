@@ -1,0 +1,27 @@
+{
+  "name": "test",
+  "scripts": {
+    "pretest": "npm run build",
+    "prestart": "npm run build",
+    "build": "gulp",
+    "start": "node build/example1"
+  },
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-typescript": "^2.13.4",
+    "typescript": "^1.8.10",
+    "typings": "^1.0.4"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.9.0",
+    "express": "^4.13.4",
+    "ramda": "^0.21.0",
+    "ramda-fantasy": "^0.5.0"
+  }
+}
