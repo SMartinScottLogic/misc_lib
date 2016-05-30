@@ -1,9 +1,9 @@
 'use strict';
 
 // ((a → Promise b), (b → Promise c), …, (y → Promise z)) → (a → Promise z)
-export function pipeP(head, ...promises): any {
+export function pipeP(head, ...promises): (any)=>Promise<any> {
     const context = this;
-    return function () {
+    return function (): Promise<any> {
         try {
             let result = head;
             if (typeof head === 'function') {
