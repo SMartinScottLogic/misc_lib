@@ -1,7 +1,7 @@
 'use strict';
 
 // ((a → Promise b), (b → Promise c), …, (y → Promise z)) → (a → Promise z)
-export function pipeP(head, ...promises): (any)=>Promise<any> {
+export function pipeP_R(head, ...promises): (...any) => Promise<any> {
     const context = this;
     return function (): Promise<any> {
         try {
@@ -16,11 +16,32 @@ export function pipeP(head, ...promises): (any)=>Promise<any> {
                 } else {
                     const [next, ...tail] = promises;
 
-                    return pipeP(next, ...tail)(result)
+                    return pipeP_R(next, ...tail)(result)
                 }
             })
         } catch (err) {
             return Promise.reject(err.message);
         }
+    }
+}
+
+export function pipeP_I(head, ...promises): (...any) => Promise<any> {
+    const context = this;
+    return function (): Promise<any> {
+        let result = head
+        if (typeof head === 'function') {
+            try {
+                result = head.call(context, ...arguments)
+            } catch (err) {
+                return Promise.reject(err.message);
+            }
+        }
+
+        return promises.reduce(
+            (prev, promise) => {
+                return prev.then((result) => (typeof (promise) === 'function') ? promise.call(context, result) : promise, (err)=>Promise.reject(err))
+            }
+            , Promise.resolve(result)
+        )
     }
 }
