@@ -1,4 +1,4 @@
-# Miscellaneous library functions
+# Functional Programming promise aware pipe
 * pipeP_x - pipe of promises - output from each is input to the next
   * pipeP_R - recursive implementation
   * pipeP_I - iterative implementation 
