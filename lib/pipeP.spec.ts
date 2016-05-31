@@ -53,7 +53,6 @@ describe('pipeP_R()', function () {
             .then((result) => done(assert.deepEqual(result, { count: 0 })))
             .catch(done);
     })
->>>>>>> 257ac32e603985d1c13a150d19f546ad1441fdaf
 
     it('chains promises', function (done) {
         pipeP_R(sum2, increment, increment, 0, increment, increment, increment, increment, increment)(1, 3)
