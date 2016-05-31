@@ -1,1 +1,1 @@
-# Miscellaneous library functions
+# Functional Programming promise aware pipe
