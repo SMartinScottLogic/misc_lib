@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var ts = require('gulp-typescript');
 var babel = require('gulp-babel');
 var rename = require('gulp-rename');
+var typedoc = require("gulp-typedoc");
 
 var babel_options = {
     "presets": ["es2015"],
@@ -28,4 +29,18 @@ gulp.task('babel', function() {
         .pipe(gulp.dest('./dist'))
 })
 
-gulp.task('default', ['tsc', 'babel']);
+gulp.task("typedoc", function() {
+    return gulp
+        .src(["lib/**/*.ts","!lib/**/*.spec.ts"])
+        .pipe(typedoc({
+            module: "commonjs",
+            target: "es6",
+            out: "docs/",
+            name: "Miscellaneous helper functionality",
+            verbose: true,
+            includeDeclarations: true
+        }))
+    ;
+});
+
+gulp.task('default', ['tsc', 'babel', 'typedoc']);

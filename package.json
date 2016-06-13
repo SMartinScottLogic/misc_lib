@@ -17,9 +17,9 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-rename": "^1.2.2",
+    "gulp-typedoc": "^2.0.0",
     "gulp-typescript": "^2.13.4",
     "mocha": "^2.5.3",
-    "typedoc": "^0.3.12",
     "typescript": "^1.8.10",
     "typings": "^1.0.4"
   },
